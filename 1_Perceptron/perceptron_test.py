@@ -6,7 +6,7 @@ from matplotlib.colors import ListedColormap
 
 def main():
     X, y = prepare_dataset()
-    pn = Perceptron(0.1, 10)
+    pn = Perceptron(0.01, 10)
     pn.fit(X,y)
     plt.plot(range(1, len(pn.errors) + 1), pn.errors, marker='o')
     plt.xlabel('Epochs')

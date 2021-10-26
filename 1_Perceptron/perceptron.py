@@ -15,14 +15,16 @@ class Perceptron(object):
       y : Target values, y.shape : [#samples]
       """
       # weights
-      self.weight = np.zeros(1 + X.shape[1])
+      #self.weight = np.zeros(1 + X.shape[1])
+      self.weight = np.random.rand(1 + X.shape[1])
       # Number of misclassifications
       self.errors = []  # Number of misclassifications
 
       for i in range(self.niter):
          err = 0
          for xi, target in zip(X, y):
-            delta_w = self.rate * (target - self.predict(xi))
+            prediction = self.predict(xi)
+            delta_w = self.rate * (target - prediction)
             self.weight[1:] += delta_w * xi
             self.weight[0] += delta_w
             err += int(delta_w != 0.0)
